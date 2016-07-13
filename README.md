@@ -1,4 +1,3 @@
-# TeamBlue
 Mini Project-Custom Furnish
 
 Group Member:
