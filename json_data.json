@@ -1,8 +1,26 @@
 {
-  "event_id":[1,2,3,4],
-  "name":["rashik","bhasin","hello","there"],
-  "event_info":["first_info","second_info","third_info","fourth_info"],
-  "date":["1.1.1","2.2.2","3.3.3","4.4.4"],
-  "venue":["venue1","venue2","venue3","venue4"],
-  "city":["delhi","hyderabad","banglore","pune"]
+    "city": [
+        "banglore", 
+        "delhi"
+    ], 
+    "name": [
+        "akhil", 
+        "rashik"
+    ], 
+    "event_id": [
+        1, 
+        2
+    ], 
+    "venue": [
+        "venue2", 
+        "venue2"
+    ], 
+    "event_info": [
+        "info2", 
+        "info2"
+    ], 
+    "date": [
+        "2017-05-17", 
+        "2001-02-01"
+    ]
 }
