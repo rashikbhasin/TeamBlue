@@ -41,13 +41,7 @@ class JsonHandler(object):
         data = None
         with open(self._filename,'r') as data_file:
             data = json.load(data_file)
-        event=Event()
-        event.set_event_id(event_id)
-        event.set_name(data[event_id]['name'])
-        event.set_info(data[event_id]['info'])
-        event.set_date(data[event_id]['date'])
-        event.set_venue(data[event_id]['venue'])
-        event.set_city(data[event_id]['city'])
+        event=Event(event_id,data[event_id]['name'],data[event_id]['info'],data[event_id]['date'],data[event_id]['venue'],data[event_id]['city'])
         return event
 
 
@@ -60,13 +54,7 @@ class JsonHandler(object):
         lst=[]
         for i in data:
             if data[i]['date'] > today:
-                event=Event()
-                event.set_event_id(i)
-                event.set_name(data[i]['name'])
-                event.set_info(data[i]['info'])
-                event.set_date(data[i]['date'])
-                event.set_venue(data[i]['venue'])
-                event.set_city(data[i]['city'])
+                event=Event(i,data[i]['name'],data[i]['info'],data[i]['date'],data[i]['venue'],data[i]['city'])
                 lst.append(event)
         return lst
 
@@ -79,13 +67,7 @@ class JsonHandler(object):
         lst=[]
         for i in data:
             if data[i]['date'] < today:
-                event = Event()
-                event.set_event_id(i)
-                event.set_name(data[i]['name'])
-                event.set_info(data[i]['info'])
-                event.set_date(data[i]['date'])
-                event.set_venue(data[i]['venue'])
-                event.set_city(data[i]['city'])
+                event = Event(i,data[i]['name'],data[i]['info'],data[i]['date'],data[i]['venue'],data[i]['city'])
                 lst.append(event)
         return lst
 
@@ -96,13 +78,7 @@ class JsonHandler(object):
         lst=[]
         for i in data:
             if data[i]['city']==city:
-                event = Event()
-                event.set_event_id(i)
-                event.set_name(data[i]['name'])
-                event.set_info(data[i]['info'])
-                event.set_date(data[i]['date'])
-                event.set_venue(data[i]['venue'])
-                event.set_city(data[i]['city'])
+                event = Event(i,data[i]['name'],data[i]['info'],data[i]['date'],data[i]['venue'],data[i]['city'])
                 lst.append(event)
         return lst
 
@@ -114,13 +90,7 @@ class JsonHandler(object):
         lst=[]
         for i in data:
             if data[i]['date'] == date:
-                event = Event()
-                event.set_event_id(i)
-                event.set_name(data[i]['name'])
-                event.set_info(data[i]['info'])
-                event.set_date(data[i]['date'])
-                event.set_venue(data[i]['venue'])
-                event.set_city(data[i]['city'])
+                event = Event(i,data[i]['name'],data[i]['info'],data[i]['date'],data[i]['venue'],data[i]['city'])
                 lst.append(event)
         return lst
 
@@ -133,13 +103,7 @@ class JsonHandler(object):
         lst=[]
         for i in data:
             if data[i]['date'] > date1 and data[i]['date'] < date2:
-                event = Event()
-                event.set_event_id(i)
-                event.set_name(data[i]['name'])
-                event.set_info(data[i]['info'])
-                event.set_date(data[i]['date'])
-                event.set_venue(data[i]['venue'])
-                event.set_city(data[i]['city'])
+                event = Event(i,data[i]['name'],data[i]['info'],data[i]['date'],data[i]['venue'],data[i]['city'])
                 lst.append(event)
         return lst
 
