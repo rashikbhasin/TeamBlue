@@ -25,3 +25,21 @@ class Events(object):
 
     def get_city(self):
         return self.city
+
+    def set_event_id(self,event_id):
+        self._event_id = event_id
+
+    def set_name(self,name):
+        self._name=name
+
+    def set_info(self,info):
+        self._event_info=info
+
+    def set_date(self,date):
+        self._date=date
+
+    def set_venue(self,venue):
+        self._venue=venue
+
+    def set_city(self,city):
+        self._city=city
