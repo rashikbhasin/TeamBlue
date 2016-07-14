@@ -32,7 +32,7 @@ class JsonHandler(object):
         with open(self._filename,'r') as data_file:
             data = json.load(data_file)
         d=event.toJson()
-        d[event.get_event_id()]=d
+        data[event.get_event_id()]=d
         with open(self._filename,'w+') as changed:
             changed.write(json.dumps(data,indent=4))
 
