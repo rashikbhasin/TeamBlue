@@ -1,9 +1,23 @@
-from manager import *
+from Manager import *
 import sys
 from events import *
 
 
 class Main(object):
+
+    def printing(evnt):
+        st = evnt.get_event_id()
+        print "Event id :", st
+        st = evnt.get_name()
+        print "Event Name :", st
+        st = evnt.get_info()
+        print "Event info :", st
+        st = evnt.get_date()
+        print "Event date :", st
+        st = evnt.get_venue()
+        print "Event venue :", st
+        st = evnt.get_city()
+        print "Event City :", st
 
     manager = Manager()
     while(True):
@@ -17,7 +31,7 @@ class Main(object):
             event.set_name(st)
             st = raw_input("Enter event info :")
             event.set_info(st)
-            st = raw_input("Enter event date :")
+            st = raw_input("Enter event date :(YYYY-MM-DD)")
             event.set_date(st)
             st = raw_input("Enter event venue :")
             event.set_venue(st)
@@ -35,7 +49,7 @@ class Main(object):
             event.set_name(st)
             st = raw_input("Enter event info for Update:")
             event.set_info(st)
-            st = raw_input("Enter event date for Update:")
+            st = raw_input("Enter event date for Update:(YYYY-MM-DD)")
             event.set_date(st)
             st = raw_input("Enter event venue for Update:")
             event.set_venue(st)
@@ -67,14 +81,14 @@ class Main(object):
             for i in event_city:
                 printing(i)
         elif input == 8:
-            date = raw_input("Enter particular date: ")
+            date = raw_input("Enter Particular Date: (YYYY-MM-DD) ")
             event_date=manager.search_date(date)
             print "Events On :",date
             for i in event_date:
                 printing(i)
         elif input==9:
-            date1 = raw_input("Enter date 1: ")
-            date2 = raw_input("Enter date 2: ")
+            date1 = raw_input("Enter date 1:(YYYY-MM-DD) ")
+            date2 = raw_input("Enter date 2:(YYYY-MM-DD) ")
             event_list_between_date=manager.list_events(date1,date2)
             print "Events Between ",date1," and ", date2
             for i in event_list_between_date:
@@ -82,19 +96,6 @@ class Main(object):
         else:
             sys.exit()
 
-def printing(evnt):
-    st=evnt.get_event_id()
-    print "Event id :",st
-    st = evnt.get_name()
-    print "Event Name :", st
-    st = evnt.get_info()
-    print "Event info :", st
-    st=evnt.get_date()
-    print "Event date :",st
-    st = evnt.get_venue()
-    print "Event venue :", st
-    st = evnt.get_city()
-    print "Event City :", st
 
 
 if __name__ == "__main__":
