@@ -1,4 +1,4 @@
-class Events(object):
+class Event(object):
 
     def __init__(self):
         self._event_id=None
@@ -7,6 +7,10 @@ class Events(object):
         self._date=None
         self._venue=None
         self._city=None
+
+    def toJson(self):
+        d={"name":self.get_name(),"info":self.get_info(),"date":self.get_date(),"venue":self.get_venue(),"city":self.get_city()}
+        return d
 
     def get_event_id(self):
         return self._event_id
