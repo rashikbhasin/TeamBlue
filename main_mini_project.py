@@ -24,7 +24,7 @@ class Main(object):
         print "Enter 1.Add Event 2.Delete Event 3.Update Event 4.Read Event 5.Upcoming Event 6.Completed Event 7.Search By City 8.Search By Date 9.List Events 10.Exit"
         input = int(raw_input())
         if input == 1:
-            event=Events()
+            event=Event()
             st=raw_input("Enter event id :")
             event.set_event_id(st)
             st = raw_input("Enter event name :")
@@ -42,7 +42,7 @@ class Main(object):
             event_id = raw_input("Enter Event id to be deleted: ")
             manager.delete(event_id)
         elif input == 3:
-            event = Events()
+            event = Event()
             st1 = raw_input("Enter event id to be updated:")
             event.set_event_id(st1)
             st = raw_input("Enter  event name for Update :")
