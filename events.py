@@ -9,22 +9,22 @@ class Events(object):
         self._city=None
 
     def get_event_id(self):
-        return self.event_id
+        return self._event_id
 
     def get_name(self):
-        return self.name
+        return self._name
 
     def get_info(self):
-        return self.event_info
+        return self._event_info
 
     def get_date(self):
-        return self.date
+        return self._date
 
     def get_venue(self):
-        return self.venue
+        return self._venue
 
     def get_city(self):
-        return self.city
+        return self._city
 
     def set_event_id(self,event_id):
         self._event_id = event_id

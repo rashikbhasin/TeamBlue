@@ -12,7 +12,7 @@ class JsonHandler(object):
         data = None
         with open(self._filename,'r') as data_file:
             data = json.load(data_file)
-        d={event.get_event_id:{"name":event.get_name,"info":event.get_info,"date":event.get_date,"venue":event.get_venue,"city":event.get_city}}
+        d={str(event.get_event_id()):{"name":str(event.get_name()),"info":str(event.get_info()),"date":str(event.get_date()),"venue":str(event.get_venue()),"city":str(event.get_city())}}
         data.update(d)
         with open(self._filename,'w+') as changed:
             changed.write(json.dumps(data,indent=4))
@@ -34,7 +34,7 @@ class JsonHandler(object):
         id=event.get_event_id()
         data[id]['name']=event.get_name()
         data[id]['info']=event.get_info()
-        data[id]['data']=event.get_date()
+        data[id]['date']=event.get_date()
         data[id]['venue']=event.get_venue()
         data[id]['city']=event.get_city()
         with open(self._filename,'w+') as changed:
