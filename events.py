@@ -1,101 +1,49 @@
-class Events(object):
+class Event(object):
 
-    def __init__(self):
-        self.event_id=None
-        self.name=None
-        self.event_info=None
-        self.date=None
-        self.venue=None
-        self.city=None
+    def __init__(self,event_id,name,event_info,date,venue,city):
+        self._event_id=event_id
+        self._name=name
+        self._event_info=event_info
+        self._date=date
+        self._venue=venue
+        self._city=city
+
+    def toJson(self):
+        d={"name":self.get_name(),"info":self.get_info(),"date":self.get_date(),"venue":self.get_venue(),"city":self.get_city()}
+        return d
+
+    def get_event_id(self):
+        return self._event_id
 
     def get_name(self):
-        return self.name
+        return self._name
 
     def get_info(self):
-        return self.event_info
+        return self._event_info
 
     def get_date(self):
-        return self.date
+        return self._date
 
     def get_venue(self):
-        return self.venue
+        return self._venue
 
     def get_city(self):
-        return self.city
+        return self._city
 
-
-class JsonHandler(object):
-
-    def __init__(self):
-        self._filename="json_data.json"
-
-    def add_events(self,event):
-        pass
-
-    def delete_event(self,event_id):
-        pass
-
-    def update_event(self,event_id):
-        pass
-
-    def read_event(self,event_id):
-        pass
-
-    def upcoming_events(self):
-        pass
-
-    def completed_events(self):
-        pass
-
-    def search_events_city(self,city):
-        pass
-
-    def search_events_date(self,date):
-        pass
-
-    def list_events(self,date1,date2):
-        pass
-
-
-
-class Manager(object):
-
-    def __init__(self):
-        self.event=Events()
-        self.jsonObj=JsonHandler()
-
-
-    def add(self):
-        pass
-
-    def delete(self,event_id):
-        pass
-
-    def update(self,event):
-        pass
-
-    def read(self,event_id):
-        pass
-
-    def upcoming(self):
-        pass
-
-    def completed(self):
-        pass
-
-    def search_city(self,city):
-        pass
-
-    def search_date(self,date):
-        pass
-
-    def list_events(self,date1,date2):
-        pass
-
-
-class Main(object):
-
-
-    manager=Manager()
-    while(True):
-        pass
+    # def set_event_id(self,event_id):
+    #     self._event_id = event_id
+    #
+    # def set_name(self,name):
+    #     self._name=name
+    #
+    # def set_info(self,info):
+    #     self._event_info=info
+    #
+    # def set_date(self,date):
+    #     self._date=date
+    #
+    # def set_venue(self,venue):
+    #     self._venue=venue
+    #
+    # def set_city(self,city):
+    #     self._city=city
