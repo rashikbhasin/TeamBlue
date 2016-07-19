@@ -40,6 +40,7 @@ class Manager(object):
         return lst
     
     
+    
     def completed(self):
         data = None
         filename="json_data.json"
