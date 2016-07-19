@@ -1,4 +1,4 @@
-from Manager import *
+from manager import *
 import sys
 from events import *
 
