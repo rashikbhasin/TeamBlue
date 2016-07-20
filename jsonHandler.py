@@ -41,7 +41,11 @@ class JsonHandler(object):
         data = None
         with open(self._filename,'r') as data_file:
             data = json.load(data_file)
-        event=Event(event_id,data[event_id]['name'],data[event_id]['info'],data[event_id]['date'],data[event_id]['venue'],data[event_id]['city'])
+        # print data
+        if event_id in data:
+            event=Event(event_id,data[event_id]['name'],data[event_id]['info'],data[event_id]['date'],data[event_id]['venue'],data[event_id]['city'])
+        else:
+            event=Event("Wrong Id!","","","","","")
         return event
 
 
