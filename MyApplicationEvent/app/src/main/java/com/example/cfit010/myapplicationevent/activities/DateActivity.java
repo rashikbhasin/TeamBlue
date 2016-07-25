@@ -1,14 +1,17 @@
 package com.example.cfit010.myapplicationevent.activities;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import com.example.cfit010.myapplicationevent.HttpRequest;
+import com.example.cfit010.myapplicationevent.PostAsyncTask;
 import com.example.cfit010.myapplicationevent.R;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +23,7 @@ import java.util.Calendar;
 /**
  * Created by cfit010 on 22/7/16.
  */
-public class DateActivity extends Activity {
+public class DateActivity extends AppCompatActivity {
 
     static final int DATE_DIALOG_ID = 0;
     private int mYear,mMonth,mDay;
@@ -88,10 +91,7 @@ public class DateActivity extends Activity {
         return true;
     }
 
-
     public void openDateActivity(View view) {
-        Intent intent = new Intent(DateActivity.this, PostDateActivity.class);
-
         JSONObject obj = new JSONObject();
         String month = "";
         String day = "";
@@ -118,9 +118,10 @@ public class DateActivity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        intent.putExtra("json", obj.toString());
         String method = getIntent().getStringExtra("method");
-        intent.putExtra("method", method);
-        startActivity(intent);
+        TextView name=(TextView)findViewById(R.id.output);
+        String url = new HttpRequest().url;
+        PostAsyncTask get_request = new PostAsyncTask(name,obj.toString());
+        get_request.execute(url+"/"+method);
     }
 }

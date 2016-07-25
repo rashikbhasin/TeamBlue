@@ -1,11 +1,14 @@
 package com.example.cfit010.myapplicationevent.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.cfit010.myapplicationevent.HttpRequest;
+import com.example.cfit010.myapplicationevent.PostAsyncTask;
 import com.example.cfit010.myapplicationevent.R;
 
 import org.json.JSONException;
@@ -14,7 +17,7 @@ import org.json.JSONObject;
 /**
  * Created by cfit010 on 22/7/16.
  */
-public class FormActivity  extends Activity {
+public class FormActivity  extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +26,6 @@ public class FormActivity  extends Activity {
     }
 
     public void openPostActivity(View view) {
-        Intent intent = new Intent(FormActivity.this, PostActivity.class);
-
         EditText city = (EditText) findViewById(R.id.city);
         JSONObject obj = new JSONObject();
         try {
@@ -33,9 +34,12 @@ public class FormActivity  extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        intent.putExtra("json", obj.toString());
         String method = getIntent().getStringExtra("method");
-        intent.putExtra("method", method);
-        startActivity(intent);
+        TextView name=(TextView)findViewById(R.id.output);
+        String url = new HttpRequest().url;
+        PostAsyncTask get_request = new PostAsyncTask(name,obj.toString());
+        get_request.execute(url+"/"+method);
+
     }
+
 }

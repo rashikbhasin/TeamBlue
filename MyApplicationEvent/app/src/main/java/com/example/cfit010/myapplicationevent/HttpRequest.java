@@ -58,9 +58,6 @@ public class HttpRequest {
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
-
-            System.out.println(json_data);
-
             OutputStream os = conn.getOutputStream();
             os.write(json_data.getBytes());
             os.flush();
