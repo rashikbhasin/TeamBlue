@@ -19,17 +19,19 @@ def add_event():
         event=Event(d["event_id"],d["name"],d["event_info"],d["date"],d["venue"],d["city"])
         #event=Event("3","aamya","info 3","2016-07-08","venue 3","mumbai")
         manager.add(event)
-        x={"Added":"Successful"}
+        # x={"Added":"Successful"}
+        x={"event_id":d["event_id"],"name":d["name"],"event_info":d["event_info"],"date":d["date"],"venue":d["venue"],"city":d["city"]}
         return json.dumps(x,indent=4),200
 
 
-@app.route("/delete",methods=["POST"])
+@app.route("/deleted",methods=["POST"])
 def delete_event():
     #if request.method=="POST":
         headers={'Content-Type': 'application/json'}
         d=request.json
         manager.delete(d["event_id"])
         x={"Deleted":"Successful"}
+        # x = {"event_id": d["event_id"], "name": d["name"], "event_info": d["event_info"], "date": d["date"],"venue": d["venue"], "city": d["city"]}
         return json.dumps(x,indent=4),200
 
 
@@ -40,7 +42,8 @@ def update_event():
         d=request.json
         event = Event(d["event_id"], d["name"], d["event_info"], d["date"], d["venue"], d["city"])
         manager.update(event)
-        x={"Updated":"Successful"}
+        # x={"Updated":"Successful"}
+        x = {"event_id": d["event_id"], "name": d["name"], "event_info": d["event_info"], "date": d["date"],"venue": d["venue"], "city": d["city"]}
         return json.dumps(x,indent=4),200
 
 @app.route("/read",methods=["POST"])
@@ -75,7 +78,7 @@ def completed_events():
         for event in event_list:
             x={"event_id":event.get_event_id(),"name":event.get_name(),"event_info":event.get_info(),"date":event.get_date(),"venue":event.get_venue(),"city":event.get_city()}
             d.append(x)
-        return json.dumps(d,indent=4)
+        return json.dumps(d,indent=4),200
 
 
 @app.route("/search-city",methods=["POST"])
